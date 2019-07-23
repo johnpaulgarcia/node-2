@@ -1,4 +1,4 @@
-exports.createPost = (req,res,next) => {
+exports.createPost = function(req,res,next){
 	let {userid,content} = req.body;
 	let db = req.app.get('db');
 	Object.keys(db).map(key=>{
@@ -31,6 +31,7 @@ exports.getPost = (req,res,next) => {
 		let myposts = posts.find(val => parseInt(val.postid) === parseInt(postid));
 		res.send(myposts);
 	});
+	next();
 }
 
 exports.getPosts = (req,res,next) => {

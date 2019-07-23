@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Documentation LOL</title>
+	<link rel="stylesheet" href="">
+</head>
+<style>
+	
+	@font-face {
+		font-family: Ak;
+		src: url(ak.ttf);
+	}
+
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: Ak;
+	}
+	.container {
+		display: grid;
+		height: 100vh;
+		grid-template-columns: 1fr 5fr 1fr;
+		grid-template-rows: 4fr 4fr 4fr;
+		grid-template-areas: 
+			"left box right"
+	}
+
+	.box {
+		grid-area: box;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 10fr 1fr;
+		grid-template-areas: 
+			"header header header"
+			"content content content"
+			"footer footer footer";
+	}
+
+	.header {
+		grid-area: header;
+		font-family: Ak;
+	}
+
+	.headtag{
+		color: #111;
+		letter-spacing: 1.2px;
+		font-weight: 100;
+		margin: 15px 5px;
+	}
+
+	.tag {
+		color: #111;
+		letter-spacing: 1.2px;
+		font-weight: 100;
+		margin: 6px;
+	}
+	.tagmenu {
+		color: #444;
+		letter-spacing: 1.2px;
+		font-weight: 100;
+		padding: 20px;
+	}
+
+	.content {
+		grid-area: content;
+	}
+
+	.footer {
+		grid-area: footer;
+	}
+
+	.set {
+		padding: 10px;
+	}
+</style>
+<body>
+	<div class="container">
+		<div class="box">
+			<div class="header">
+				<h3 class="headtag">
+					Directory
+				</h3>
+			</div>
+
+			<div class="content">
+				<h5 class="tag">Request Available</h5>
+
+				<fieldset>
+					<legend class="tagmenu"><h4>POST</h4></legend>
+					<div class="set">
+						<h5 class="tag">Create User</h5>
+						<h4 class="tag">/api/create/user</h4>
+						<h6 class="tag">{email,password}</h6>
+					</div>
+
+					<div class="set">
+						<h5 class="tag">View Profile</h5>
+						<h4 class="tag">/api/user/profile</h4>
+						<h6 class="tag">{email}</h6>
+					</div>
+
+					<div class="set">
+						<h5 class="tag">Create Post</h5>
+						<h4 class="tag">/api/create/post</h4>
+						<h6 class="tag">{userid,postid,content}</h6>
+					</div>
+
+					<div class="set">
+						<h5 class="tag">Create Comment</h5>
+						<h4 class="tag">/api/create/comment</h4>
+						<h6 class="tag">{userid,postid,comment}</h6>
+					</div>
+
+				</fieldset>
+			
+
+
+
+
+				<fieldset>
+					<legend class="tagmenu"><h4>GET</h4></legend>
+					<div class="set">
+						<h5 class="tag">View All Posts</h5>
+						<h4 class="tag">/api/user/:userid/posts</h4>
+					</div>
+
+					<div class="set">
+						<h5 class="tag">View Post</h5>
+						<h4 class="tag">/api/posts/:postid</h4>
+					</div>
+
+				</fieldset>
+
+
+				<fieldset>
+					<legend class="tagmenu"><h4>Patch</h4></legend>
+					<div class="set">
+						<h5 class="tag">Update Profile</h5>
+						<h4 class="tag">/api/user/profile</h4>
+						<h6 class="tag">{userid,thumbnail,about}</h6>
+					</div>
+
+				</fieldset>
+			
+			</div>
+
+			<div class="footer">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

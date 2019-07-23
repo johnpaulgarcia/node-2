@@ -3,7 +3,7 @@ const PostController = require('./PostController');
 const UserController = require('./UserController');
 
 const def = (req,res,next) => {
-	res.send("API: /api/{options (e.g /api/create/user)}")
+	res.sendFile(__dirname + "/landing.html");
 }
 
 const debug = (req,res,next) => {
