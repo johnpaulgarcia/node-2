@@ -3,7 +3,7 @@ const PostController = require('./PostController');
 const UserController = require('./UserController');
 
 const def = (req,res,next) => {
-	res.send("Home DIR")
+	res.send("API: /api/{options (e.g /api/create/user)}")
 }
 
 const debug = (req,res,next) => {
@@ -16,8 +16,8 @@ router.route('/create/post').post(PostController.createPost);
 router.route('/create/comment').post(PostController.addComment);
 router.route('/user/profile').post(UserController.getProfile);
 router.route('/user/profile').patch(UserController.updateProfile);
-router.route('/posts').get(PostController.getPosts);
-router.route('/posts/:id').get(PostController.getPost);
+router.route('/user/:userid/posts').get(PostController.getPosts);
+router.route('/posts/:postid').get(PostController.getPost);
 
 router.route('/debug').get(debug);
 

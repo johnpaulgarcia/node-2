@@ -6,28 +6,42 @@ exports.createUser = (req,res,next) => {
 		let id = data.length+1;
 		data.push({id,email,password});
 		createProfile(db[key],id);
-		res.send(db);
+		res.send(data);
 	})
 	next()
 }
 
 createProfile = (data,id) => {
 	let profile = data.profiles.data;
-	profile.push({id,thumbnail: '',about: ''});
+	profile.push({userid:id,thumbnail: '',about: ''});
 }
 
 exports.updateProfile = (req,res,next) => {
-	let {id,thumbnail,about} = req.body;
+	let {userid,thumbnail,about} = req.body;
 	let db = req.app.get('db');
 	Object.keys(db).map(key=>{
 		let profile = db[key].profiles.data;
-		profile[id] = {id,thumbnail,about};
+		let index = profile.indexOf(profile.find(val => val.userid === userid));
+		profile[index] = {userid,thumbnail,about};
+		res.send(profile);
 	})
-	res.send(db);
 	next();
 	//to update
 }
 
 exports.getProfile = (req,res,next) => {
-	res.send("Get Profiles");
+	let {email} = req.body;
+	let db = req.app.get('db');
+	Object.keys(db).map(key=>{
+		let data = db[key].users.data;
+		let find = data.find(val=>val.email === email);
+		let id = find.id;
+		if(id){
+			let profiles = db[key].profiles.data.find(val => val.userid === id);
+			res.send(profiles);
+		}
+		else res.send("No Profile Found!");
+	});
+
+	next();
 }
